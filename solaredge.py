@@ -14,7 +14,7 @@ datapoint = {"measurement": "SolarEdge", "tags": {"inverter": "1"}, "fields": {}
 logger = logging.getLogger("solaredge")
 
 
-async def write_to_influx(dbhost, dbport, period, dbname="solaredge"):
+async def write_to_influx(dbhost, dbport, period, dbname):
     global client
 
     def trunc_float(floatval):
@@ -133,6 +133,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--influxdb", default="localhost")
     parser.add_argument("--influxport", type=int, default=8086)
+    parser.add_argument("--dbname", default="solaredge")
     parser.add_argument(
         "--port", type=int, default=502, help="ModBus TCP port number to use"
     )
@@ -168,5 +169,5 @@ if __name__ == "__main__":
     )
     logger.debug("Running eventloop")
     asyncio.get_event_loop().run_until_complete(
-        write_to_influx(args.influxdb, args.influxport, args.period)
+        write_to_influx(args.influxdb, args.influxport, args.period, args.dbname)
     )
