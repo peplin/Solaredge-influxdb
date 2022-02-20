@@ -52,64 +52,64 @@ async def write_to_influx(dbhost, dbport, period, dbname):
                 scalefactor = 10 ** data.decode_16bit_int()
                 data.skip_bytes(-10)
                 # Register 40072-40075
-                datapoint["fields"]["AC Total Current"] = decode_value(
+                datapoint["fields"]["ac_total_current"] = decode_value(
                     data.decode_16bit_uint(), scalefactor
                 )
-                datapoint["fields"]["AC Current phase A"] = decode_value(
+                datapoint["fields"]["ac_current_phase_a"] = decode_value(
                     data.decode_16bit_uint(), scalefactor
                 )
-                datapoint["fields"]["AC Current phase B"] = decode_value(
+                datapoint["fields"]["ac_current_phase_b"] = decode_value(
                     data.decode_16bit_uint(), scalefactor
                 )
-                datapoint["fields"]["AC Current phase C"] = decode_value(
+                datapoint["fields"]["ac_current_phase_c"] = decode_value(
                     data.decode_16bit_uint(), scalefactor
                 )
                 data.skip_bytes(14)
                 scalefactor = 10 ** data.decode_16bit_int()
                 data.skip_bytes(-8)
                 # register 40080-40082
-                datapoint["fields"]["AC Voltage phase A"] = decode_value(
+                datapoint["fields"]["ac_voltage_phase_a"] = decode_value(
                     data.decode_16bit_uint(), scalefactor
                 )
-                datapoint["fields"]["AC Voltage phase B"] = decode_value(
+                datapoint["fields"]["ac_voltage_phase_b"] = decode_value(
                     data.decode_16bit_uint(), scalefactor
                 )
-                datapoint["fields"]["AC Voltage phase C"] = decode_value(
+                datapoint["fields"]["ac_voltage_phase_c"] = decode_value(
                     data.decode_16bit_uint(), scalefactor
                 )
                 data.skip_bytes(4)
                 scalefactor = 10 ** data.decode_16bit_int()
                 data.skip_bytes(-4)
                 # register 40084
-                datapoint["fields"]["AC Power output"] = decode_value(
+                datapoint["fields"]["ac_power_output"] = decode_value(
                     data.decode_16bit_int(), scalefactor
                 )
                 data.skip_bytes(22)
                 scalefactor = 10 ** data.decode_16bit_uint()
                 data.skip_bytes(-6)
                 # register 40094
-                datapoint["fields"]["AC Lifetimeproduction"] = decode_value(
+                datapoint["fields"]["ac_lifetime_production"] = decode_value(
                     data.decode_32bit_uint(), scalefactor
                 )
                 data.skip_bytes(4)
                 scalefactor = 10 ** data.decode_16bit_int()
                 data.skip_bytes(-4)
                 # register 40097
-                datapoint["fields"]["DC Current"] = decode_value(
+                datapoint["fields"]["dc_current"] = decode_value(
                     data.decode_16bit_uint(), scalefactor
                 )
                 data.skip_bytes(4)
                 scalefactor = 10 ** data.decode_16bit_int()
                 data.skip_bytes(-4)
                 # register 40099
-                datapoint["fields"]["DC Voltage"] = decode_value(
+                datapoint["fields"]["dc_voltage"] = decode_value(
                     data.decode_16bit_uint(), scalefactor
                 )
                 data.skip_bytes(4)
                 scalefactor = 10 ** data.decode_16bit_int()
                 data.skip_bytes(-4)
                 # datapoint 40101
-                datapoint["fields"]["DC Power input"] = decode_value(
+                datapoint["fields"]["dc_power_input"] = decode_value(
                     data.decode_16bit_int(), scalefactor
                 )
 
