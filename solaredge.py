@@ -46,7 +46,7 @@ async def write_to_influx(dbhost, dbport, period, dbname):
             if reg_block:
                 # print(reg_block)
                 data = BinaryPayloadDecoder.fromRegisters(
-                    reg_block, byteorder=Endian.Big, wordorder=Endian.Big
+                    reg_block, byteorder=Endian.BIG, wordorder=Endian.BIG
                 )
                 data.skip_bytes(12)
                 scalefactor = 10 ** data.decode_16bit_int()
